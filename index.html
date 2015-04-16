@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Marvel Time!</title>
+</head>
+
+<body>
+
+<h1>My favorite Marvel Characters</h1>
+
+<div id="content"></div>
+
+<footer>
+    <p>Data provided by Marvel. &copy; 2014 <a href="http://marvel.com">Marvel</a></p>
+</footer>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+    var marvelTime = marvelTime || {};
+
+    marvelTime.render = function(characters) {
+        $.each(characters, function( index, value ) {
+            var template = '<div class="character">' +
+                '<h2>' + value.name + '</h2>' +
+                '<h3>#' + value.id + '</h3>' +
+                '<p><img src="' + value.thumbnail.path + '.' + value.thumbnail.extension + '">';
+
+            $('#content').append(template);
+        });
+    }
+
+    //var data = {
+    //    apikey: 'e1ddc225cd15cf68b85164297175334a',
+    //    //comics: 51915
+    //}
+    //
+    //$.ajax( {
+    //    url: 'http://gateway.marvel.com/v1/public/comics/51915',
+    //    data: data,
+    //    success: function(response) {
+    //        console.log(response);
+    //        //marvelTime.render(response.data.results);
+    //    }
+    //} );
+
+    $.ajax( {
+        url: 'http://gateway.marvel.com/v1/public/comics',
+        data: {
+            apikey: 'e1ddc225cd15cf68b85164297175334a',
+            titleStartsWith: 'guardians'
+        },
+        success: function(data) {
+            console.log(data);
+            marvelTime.render(data.data.results);
+        }
+    } );
+
+</script>
+</body>
+</html>
