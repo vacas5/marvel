@@ -8,15 +8,14 @@ class App extends Component {
       <div className="App">
         <div className="App-wrapper">
           <div className="App-header">
-            <h2 className="App-logo">
+            <h1 className="App-logo">
               <img src="http://vignette2.wikia.nocookie.net/spiderman/images/5/53/Marvel-logo-copy1.png" alt="logo" />
               ATOR
-            </h2>
+            </h1>
           </div>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
+          <div className="App-intro">
             <CharacterList></CharacterList>
-          </p>
+          </div>
         </div>
         <div className="App-footer">
           <p>Data provided by Marvel. &copy; 2016 Marvel</p>
