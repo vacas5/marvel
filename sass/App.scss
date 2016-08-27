@@ -1,0 +1,38 @@
+@import "base/variables";
+
+.App-wrapper {
+  background: #fff;
+  overflow: hidden;
+}
+
+.App-logo {
+  height: 91px;
+  line-height: 91px;
+  color: #fff;
+  font-size: 4.5em;
+  overflow: hidden;
+  margin: 0;
+  img {
+    float: left;
+    margin-right: 4px;
+  }
+}
+
+.App-header {
+  background-color: $dark-gray;
+  padding: 20px;
+}
+
+.App-intro {
+  padding: 20px;
+}
+
+.App-footer {
+    text-align: right;
+    padding: 20px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
