@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 class CharacterList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       characters: [],
-      letter: 'a'
+      letter: this.props.params.letter || "a",
     };
   }
 
