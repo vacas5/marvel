@@ -19,17 +19,45 @@ class CharacterList extends Component {
     }.bind(this);
 
     request.addEventListener('load', reqListener);
-    request.open('GET', 'http://gateway.marvel.com/v1/public/characters?apikey=e1ddc225cd15cf68b85164297175334a&orderBy=name&nameStartsWith=' + this.state.letter);
+    request.open('GET', 'http://gateway.marvel.com/v1/public/characters?apikey=e1ddc225cd15cf68b85164297175334a&orderBy=name&limit=100&nameStartsWith=' + this.state.letter);
     request.send();
   }
 
   render() {
     return (
-      <ul className="character_list">
-        {this.state.characters.map( (character, index) => {
-          return <li key={index}>{character.name}, {character.description}</li>;
-        })}
-      </ul>
+      <div>
+        <h2 className="main_title">Characters</h2>
+        <div className="cards">
+          {this.state.characters.map( (character, index) => {
+            return (
+              <div className="card" key={character.id}>
+                <div className="card-image">
+                  <img src={character.thumbnail.path + '.' + character.thumbnail.extension} alt={character.name + ' thumbnail'} />
+                </div>
+                <div className="card-header">
+                  {character.name}
+                </div>
+                <div className="card-copy">
+                  <ul>
+                    {character.urls.map( (url, index) => {
+                      var names = {
+                        'detail': 'Detail',
+                        'wiki': 'Wiki',
+                        'comiclink': 'Comic Link'
+                      };
+                      return (
+                        <li key={character.id + '_' + index}>
+                          <a href={url.url}>{names[url.type]}</a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     );
   }
 }
