@@ -13,9 +13,11 @@ class CharacterList extends Component {
     var request = new XMLHttpRequest(),
     reqListener = function () {
       var reqJson = JSON.parse(request.response);
-      this.setState({
-        characters: reqJson.data.results
-      });
+      if (request.status === 200) {
+        this.setState({
+          characters: reqJson.data.results
+        });
+      }
     }.bind(this);
 
     request.addEventListener('load', reqListener);
