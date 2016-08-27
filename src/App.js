@@ -14,7 +14,7 @@ class App extends Component {
             </h1>
           </div>
           <div className="App-intro">
-            <CharacterList></CharacterList>
+            <CharacterList params={this.props.params}/>
           </div>
         </div>
         <div className="App-footer">
