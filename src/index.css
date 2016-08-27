@@ -606,4 +606,10 @@ body {
     .card:active .card-header {
       background-color: #f7f7f7; }
 
+.nav_items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1.5em; }
+
 /*# sourceMappingURL=index.css.map */
