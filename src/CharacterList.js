@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AlphaLinks from './AlphaLinks';
+import Card from './Card';
 
 class CharacterList extends Component {
   constructor(props) {
@@ -51,32 +52,9 @@ class CharacterList extends Component {
           {alphabet.map((letter, index) => <AlphaLinks letter={letter} key={index} />)}
         </ul>
         <div className="cards">
-          {this.state.characters.map( (character, index) => {
+          {this.state.characters.map( (character) => {
             return (
-              <div className="card" key={character.id}>
-                <div className="card-image">
-                  <img src={character.thumbnail.path + '.' + character.thumbnail.extension} alt={character.name + ' thumbnail'} />
-                </div>
-                <div className="card-header">
-                  {character.name}
-                </div>
-                <div className="card-copy">
-                  <ul>
-                    {character.urls.map( (url, index) => {
-                      var names = {
-                        'detail': 'Detail',
-                        'wiki': 'Wiki',
-                        'comiclink': 'Comic Link'
-                      };
-                      return (
-                        <li key={character.id + '_' + index}>
-                          <a href={url.url}>{names[url.type]}</a>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
+              <Card key={character.id} model={character} />
             );
           })}
         </div>
