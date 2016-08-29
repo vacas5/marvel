@@ -7,7 +7,7 @@ class CharacterList extends Component {
     super(props);
     this.state = {
       characters: [],
-      letter: this.props.params.letter || "a",
+      letter: this.props.params.letter || "a"
     };
     this.fetchCharacters = this.fetchCharacters.bind(this);
   }
@@ -18,12 +18,16 @@ class CharacterList extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.props.params.letter !== nextProps.params.letter) {
-      this.setState({letter: nextProps.params.letter});
+      this.setState({
+        letter: nextProps.params.letter
+      });
+      // putting fetch here because we only want to fire on new prop
+      this.fetchCharacters(nextProps.params.letter);
     }
   }
 
   componentWillUpdate() {
-    this.fetchCharacters(this.state.letter);
+    // will run after fetchCharacters on initial load and redirect
   }
 
   fetchCharacters(letter) {
@@ -38,7 +42,7 @@ class CharacterList extends Component {
     }.bind(this);
 
     request.addEventListener('load', reqListener);
-    request.open('GET', 'http://gateway.marvel.com/v1/public/characters?apikey=e1ddc225cd15cf68b85164297175334a&orderBy=name&limit=100&nameStartsWith=' + letter);
+    request.open('GET', `http://gateway.marvel.com/v1/public/characters?apikey=e1ddc225cd15cf68b85164297175334a&orderBy=name&limit=100&nameStartsWith=${letter}`);
     request.send();
   }
 

@@ -34,7 +34,7 @@ class Header extends Component {
           <nav role="navigation">
             <ul className={navClass}>
               <li className="nav-link">
-                <Link to="/">Characters</Link>
+                <Link to="/characters/a">Characters</Link>
               </li>
             </ul>
           </nav>
