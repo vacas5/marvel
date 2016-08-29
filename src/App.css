@@ -2,21 +2,6 @@
   background: #fff;
   overflow: hidden; }
 
-.App-logo {
-  height: 91px;
-  line-height: 91px;
-  color: #fff;
-  font-size: 4.5em;
-  overflow: hidden;
-  margin: 0; }
-  .App-logo img {
-    float: left;
-    margin-right: 4px; }
-
-.App-header {
-  background-color: #46454A;
-  padding: 20px; }
-
 .App-intro {
   padding: 20px; }
 
