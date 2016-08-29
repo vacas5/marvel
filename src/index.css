@@ -566,5 +566,12 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 1.5em; }
+  .nav_items li {
+    flex-grow: 1;
+    border-left: 1px solid #ddd;
+    text-transform: uppercase;
+    text-align: center; }
+    .nav_items li:first-child {
+      border-left: 0; }
 
 /*# sourceMappingURL=index.css.map */
