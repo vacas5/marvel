@@ -1,0 +1,39 @@
+@import "normalize";
+@import "../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "../node_modules/bourbon-neat/app/assets/stylesheets/neat";
+@import "base/base";
+
+body {
+    background-color: #DC4729;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.main_title {
+    font-size: 2em;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -20px;
+}
+
+.nav_items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+  li {
+    flex-basis: 2em;
+    flex-grow: 1;
+    border-left: 1px solid $base-border-color;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 8px;
+    &:first-child {
+        border-left: 0;
+    }
+  }
+}
