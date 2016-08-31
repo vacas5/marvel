@@ -10,14 +10,19 @@ class Card extends Component {
   }
 
   render() {
-    const model = this.state.model;
+    const model = this.state.model,
+    headers = {
+      "character": model.name,
+      "series": model.title
+    };
+
     return (
       <div className="card">
         <div className="card-image">
           <img src={model.thumbnail.path + '.' + model.thumbnail.extension} alt={model.name + ' thumbnail'} />
         </div>
         <div className="card-header">
-          {model.name}
+          {headers[this.props.type]}
         </div>
         <div className="card-copy">
           <ul>

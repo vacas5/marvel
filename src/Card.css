@@ -3,7 +3,6 @@
   border: 1px solid #ddd;
   border-radius: 3px;
   box-shadow: 0 2px 4px #e6e6e6;
-  cursor: pointer;
   flex-basis: 15em;
   flex-grow: 1;
   margin: 0 1em 1.5em 1em;
@@ -34,10 +33,8 @@
     padding: 0.75em 0.75em; }
     .card .card-copy p {
       margin: 0 0 0.75em; }
-  .card:focus, .card:hover {
-    cursor: pointer; }
-    .card:focus img, .card:hover img {
-      opacity: 0.7; }
+  .card:focus img, .card:hover img {
+    opacity: 0.7; }
   .card:active {
     background-color: #f7f7f7; }
     .card:active .card-header {

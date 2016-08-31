@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Header';
-import CharacterList from './CharacterList';
 
 class App extends Component {
   render() {
@@ -10,7 +9,7 @@ class App extends Component {
         <div className="App-wrapper">
           <Header />
           <div className="App-intro">
-            <CharacterList params={this.props.params}/>
+            {this.props.children}
           </div>
         </div>
         <div className="App-footer">
