@@ -561,21 +561,6 @@ body {
   justify-content: space-between;
   margin: 0 -20px; }
 
-.nav_items {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 1.5em; }
-  .nav_items li {
-    flex-basis: 2em;
-    flex-grow: 1;
-    border-left: 1px solid #ddd;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 8px; }
-    .nav_items li:first-child {
-      border-left: 0; }
-
 .spin {
   -webkit-animation-name: rotateThis;
   -moz-animation-name: rotateThis;
