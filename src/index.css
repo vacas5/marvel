@@ -364,6 +364,7 @@ html {
 
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   appearance: none;
+  -webkit-appearance: none;
   background-color: #DC4729;
   border: 0;
   border-radius: 3px;
@@ -598,5 +599,18 @@ body {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: block; }
+
+.pull_right {
+  float: right; }
+
+.pull_left {
+  float: left; }
+
+.text_center {
+  text-align: center; }
 
 /*# sourceMappingURL=index.css.map */
