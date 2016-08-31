@@ -1,0 +1,36 @@
+@import "../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "base/variables";
+
+.nav_items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+  li {
+    flex-basis: 2em;
+    flex-grow: 1;
+    border-left: 1px solid $base-border-color;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 8px;
+    a {
+        display: block;
+    }
+    &:first-child {
+        border-left: 0;
+    }
+    &:hover, &:focus, &:active, &.active {
+        background-color: tint($action-color, 40%);
+        border-color: transparent;
+        a {
+            color: #fff;
+        }
+        + li {
+            border-color: transparent;
+        }
+    }
+    &.active {
+        background-color: $action-color;
+    }
+  }
+}

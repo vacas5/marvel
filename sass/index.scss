@@ -20,24 +20,6 @@ body {
   margin: 0 -20px;
 }
 
-.nav_items {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 1.5em;
-  li {
-    flex-basis: 2em;
-    flex-grow: 1;
-    border-left: 1px solid $base-border-color;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 8px;
-    &:first-child {
-        border-left: 0;
-    }
-  }
-}
-
 .spin {
     @include animation-name(rotateThis);
     @include animation-duration(1s);

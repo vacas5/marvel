@@ -55,7 +55,7 @@ class CharacterList extends Component {
       <div>
         <h2 className="main_title">Characters</h2>
         <ul className="nav_items">
-          {alphabet.map((letter, index) => <AlphaLinks letter={letter} key={index} />)}
+          {alphabet.map((letter, index) => <AlphaLinks letter={letter} key={index} selected={this.state.letter === letter} />)}
         </ul>
         {!this.state.characters.length && <Loader />}
         <div className="cards">
