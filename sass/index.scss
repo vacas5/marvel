@@ -37,3 +37,19 @@ body {
     }
   }
 }
+
+.spin {
+    @include animation-name(rotateThis);
+    @include animation-duration(1s);
+    @include animation-iteration-count(infinite);
+    @include animation-timing-function(linear);
+}
+
+@include keyframes (rotateThis) {
+    from {
+        @include transform(rotate( 0deg ));
+    }
+    to  {
+        @include transform(rotate( 360deg ));
+    }
+}

@@ -3,7 +3,8 @@
   overflow: hidden; }
 
 .App-intro {
-  padding: 20px; }
+  padding: 20px;
+  min-height: 30rem; }
 
 .App-footer {
   text-align: right;

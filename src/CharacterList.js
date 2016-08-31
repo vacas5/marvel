@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AlphaLinks from './AlphaLinks';
+import Loader from './Loader';
 import Card from './Card';
 
 class CharacterList extends Component {
@@ -19,6 +20,7 @@ class CharacterList extends Component {
   componentWillReceiveProps(nextProps) {
     if(this.props.params.letter !== nextProps.params.letter) {
       this.setState({
+        characters: [],
         letter: nextProps.params.letter
       });
       // putting fetch here because we only want to fire on new prop
@@ -55,6 +57,7 @@ class CharacterList extends Component {
         <ul className="nav_items">
           {alphabet.map((letter, index) => <AlphaLinks letter={letter} key={index} />)}
         </ul>
+        {!this.state.characters.length && <Loader />}
         <div className="cards">
           {this.state.characters.map( (character) => {
             return (
