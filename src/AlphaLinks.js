@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import './AlphaLinks.css';
 import classNames from 'classnames';
 
-export default function AlphaLinks({ letter, selected }) {
+function AlphaLinks({ letter, selected }) {
     var listClass = classNames({
       'active': selected
     });
@@ -11,3 +11,10 @@ export default function AlphaLinks({ letter, selected }) {
       <li className={listClass}><Link to={`/characters/${letter}`}>{letter}</Link></li>
     )
 }
+
+AlphaLinks.propTypes = {
+  letter: React.PropTypes.string,
+  selected: React.PropTypes.bool,
+}
+
+export default AlphaLinks;
