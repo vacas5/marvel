@@ -10,11 +10,11 @@
   $card-image-hover-opacity: 0.7;
   $card-image-hover-color: $blue;
 
-  background-color: $card-background;
+  background-color: $card-image-hover-color;
   border: $card-border;
   border-radius: $base-border-radius;
   box-shadow: 0 2px 4px darken($base-background-color, 10%);
-  cursor: pointer;
+  //cursor: pointer;
   flex-basis: 15em;
   flex-grow: 1;
   margin: 0 $card-margin $base-spacing $card-margin;
@@ -22,16 +22,15 @@
   transition: all 0.2s ease-in-out;
 
   .card-image {
-    background-color: $card-image-hover-color;
+    background-position: top center;
+    background-size: cover;
     height: 200px;
     max-height: 200px;
     overflow: hidden;
-
-    img {
-      @include border-top-radius($base-border-radius);
-      opacity: 1;
-      transition: all 0.2s ease-in-out;
-      width: 100%;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+    &.bottom {
+      background-position: bottom center;
     }
   }
 
@@ -46,6 +45,7 @@
   }
 
   .card-copy {
+    background-color: $card-background;
     font-size: 0.9em;
     line-height: 1.5em;
     padding: ($base-spacing / 2) ($base-spacing / 2);
@@ -57,9 +57,9 @@
 
   &:focus,
   &:hover {
-    cursor: pointer;
+    //cursor: pointer;
 
-    img {
+    .card-image {
       opacity: $card-image-hover-opacity;
     }
   }

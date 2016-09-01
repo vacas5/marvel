@@ -3,55 +3,53 @@ import AlphaLinks from './AlphaLinks';
 import Loader from './Loader';
 import Card from './Card';
 
-class CharacterList extends Component {
+class SeriesList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      characters: [],
+      series: [],
       letter: this.props.params.letter || "a",
       total: 0,
       page: 0,
-      paging: this.props.paging || 20,
+      paging: this.props.paging || 50,
       count: 0,
       offset: 0
     };
-    this.fetchCharacters = this.fetchCharacters.bind(this);
+    this.fetchSeries = this.fetchSeries.bind(this);
     this.resetPage = this.resetPage.bind(this);
     this.incrementPage = this.incrementPage.bind(this);
     this.decrementPage = this.decrementPage.bind(this);
   }
 
   componentDidMount() {
-    this.fetchCharacters(this.state.letter, 0);
+    this.fetchSeries(this.state.letter, 0);
   }
 
   componentWillReceiveProps(nextProps) {
-    // just in case it's called by default route
-    const nextLetter = nextProps.params.letter || 'a';
-    if(this.props.params.letter !== nextLetter) {
+    if(this.props.params.letter !== nextProps.params.letter) {
       this.setState({
-        characters: [],
-        letter: nextLetter,
+        series: [],
+        letter: nextProps.params.letter,
         total: 0,
         page: 0,
         offset: 0
       });
       // putting fetch here because we only want to fire on new prop
-      this.fetchCharacters(nextLetter, 0);
+      this.fetchSeries(nextProps.params.letter, 0);
     }
   }
 
   componentWillUpdate() {
-    // will run after fetchCharacters on initial load and redirect
+    // will run after fetchSeries on initial load and redirect
   }
 
-  fetchCharacters(letter, offset) {
+  fetchSeries(letter, offset) {
     var request = new XMLHttpRequest(),
     reqListener = function () {
       var reqJson = JSON.parse(request.response);
       if (request.status === 200) {
         this.setState({
-          characters: reqJson.data.results,
+          series: reqJson.data.results,
           total: reqJson.data.total,
           count: reqJson.data.count
         });
@@ -59,7 +57,7 @@ class CharacterList extends Component {
     }.bind(this);
 
     request.addEventListener('load', reqListener);
-    request.open('GET', `http://gateway.marvel.com/v1/public/characters?apikey=e1ddc225cd15cf68b85164297175334a&orderBy=name&limit=${this.state.paging}&offset=${offset}&nameStartsWith=${letter}`);
+    request.open('GET', `http://gateway.marvel.com/v1/public/series?apikey=e1ddc225cd15cf68b85164297175334a&orderBy=title&limit=${this.state.paging}&offset=${offset}&titleStartsWith=${letter}`);
     request.send();
   }
 
@@ -67,12 +65,12 @@ class CharacterList extends Component {
     const offset = (page * this.state.paging) || 0;
 
     this.setState({
-      characters: [],
+      series: [],
       total: 0,
       page: page,
       offset: offset
     });
-    this.fetchCharacters(this.state.letter, offset);
+    this.fetchSeries(this.state.letter, offset);
   }
 
   incrementPage() {
@@ -88,15 +86,15 @@ class CharacterList extends Component {
 
     return (
       <div>
-        <h2 className="main_title">Characters</h2>
+        <h2 className="main_title">Series</h2>
         <ul className="nav_items">
-          {alphabet.map((letter, index) => <AlphaLinks letter={letter} route={`/characters/${letter}`} key={index} selected={this.state.letter === letter} />)}
+          {alphabet.map((letter, index) => <AlphaLinks letter={letter} route={`/series/${letter}`} key={index} selected={this.state.letter === letter} />)}
         </ul>
-        {!this.state.total && <Loader />}
+        {!this.state.series.length && <Loader />}
         <div className="cards">
-          {this.state.characters.map( (character) => {
+          {this.state.series.map( (ser) => {
             return (
-              <Card key={character.id} model={character} type="character" />
+              <Card key={ser.id} model={ser} type="series" />
             );
           })}
         </div>
@@ -110,4 +108,4 @@ class CharacterList extends Component {
   }
 }
 
-export default CharacterList;
+export default SeriesList;

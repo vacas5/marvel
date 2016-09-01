@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import logo from './mlogo.png';
 import './Header.css';
 import { Link } from 'react-router';
 import classNames from 'classnames';
@@ -26,7 +27,7 @@ class Header extends Component {
         <div className="navigation-wrapper">
           <h1 className="logo">
             <Link to="/">
-              <img src="https://s3-us-west-2.amazonaws.com/russelljanderson-dev/marvelator/mlogo.png" alt="Marvel logo" />
+              <img src={logo} alt="Marvel logo" />
               ATOR
             </Link>
           </h1>
@@ -35,6 +36,7 @@ class Header extends Component {
             <ul className={navClass}>
               <li className="nav-link">
                 <Link to="/characters/a">Characters</Link>
+                <Link to="/series/a">Series</Link>
               </li>
             </ul>
           </nav>
