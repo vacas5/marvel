@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Card.css';
+import classNames from 'classnames';
 
 class Card extends Component {
   constructor(props) {
@@ -14,13 +15,18 @@ class Card extends Component {
     headers = {
       "character": model.name,
       "series": model.title
+    },
+    cardImageClass = classNames({
+      'card-image': true,
+      'bottom': model.thumbnail.path.indexOf('image_not_available') > -1
+    }),
+    cardImageStyle = {
+      backgroundImage: `url(${model.thumbnail.path}.${model.thumbnail.extension})`
     };
 
     return (
       <div className="card">
-        <div className="card-image">
-          <img src={model.thumbnail.path + '.' + model.thumbnail.extension} alt={model.name + ' thumbnail'} />
-        </div>
+        <div className={cardImageClass} style={cardImageStyle}></div>
         <div className="card-header">
           {headers[this.props.type]}
         </div>
