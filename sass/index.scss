@@ -35,3 +35,19 @@ body {
         @include transform(rotate( 360deg ));
     }
 }
+
+.clearfix {
+    @include clearfix;
+}
+
+.pull_right {
+    float: right;
+}
+
+.pull_left {
+    float: left;
+}
+
+.text_center {
+    text-align: center;
+}
