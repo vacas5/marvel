@@ -10,7 +10,7 @@
   $card-image-hover-opacity: 0.7;
   $card-image-hover-color: $blue;
 
-  background-color: $card-image-hover-color;
+  background-color: $card-background;
   border: $card-border;
   border-radius: $base-border-radius;
   box-shadow: 0 2px 4px darken($base-background-color, 10%);
