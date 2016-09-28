@@ -1,18 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Card.css';
 import classNames from 'classnames';
 
-class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      model: this.props.model
-    };
-  }
-
-  render() {
-    const model = this.state.model,
-    headers = {
+function Card({ model, type }) {
+    const headers = {
       "character": model.name,
       "series": model.title
     },
@@ -28,7 +19,7 @@ class Card extends Component {
       <div className="card">
         <div className={cardImageClass} style={cardImageStyle}></div>
         <div className="card-header">
-          {headers[this.props.type]}
+          {headers[type]}
         </div>
         <div className="card-copy">
           <ul>
@@ -48,7 +39,11 @@ class Card extends Component {
         </div>
       </div>
     )
-  }
+}
+
+Card.propTypes = {
+  model: React.PropTypes.object,
+  type: React.PropTypes.string,
 }
 
 export default Card;
