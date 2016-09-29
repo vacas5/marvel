@@ -1,0 +1,14 @@
+dependencies:
+  post:
+    - pip install awscli
+    
+test:
+  override:
+    - echo "test"
+    
+deployment:
+  dev:
+    branch: develop
+    commands:
+      - npm run build
+      - aws s3 sync build s3://marvel-dev.russelljanderson.com --delete
