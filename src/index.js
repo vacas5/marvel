@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import CharacterList from './CharacterList';
 import SeriesList from './SeriesList';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import './index.css';
 
 
 ReactDOM.render(
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={CharacterList} />
       <Route path="characters/:letter" component={CharacterList} />
