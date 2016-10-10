@@ -1,4 +1,4 @@
-# [Marvelator](https://russelljanderson/marvel)
+# [Marvelator](https://russelljanderson.com/marvel)
 
 A simple application to consume the [Marvel API](http://developer.marvel.com/) built with React and Bourbon/Neat/Bitters/Refills.
 

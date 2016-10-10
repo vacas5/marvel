@@ -1,11 +1,7 @@
-dependencies:
-  post:
-    - pip install awscli
-    
 test:
   override:
     - echo "test"
-    
+
 deployment:
   dev:
     branch: develop
