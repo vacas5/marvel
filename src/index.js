@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.scss';
 import App from './App';
 import CharacterList from './CharacterList';
 import SeriesList from './SeriesList';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import './index.css';
-
 
 ReactDOM.render(
   <Router history={browserHistory}>

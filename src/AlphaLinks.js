@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import './AlphaLinks.css';
+import './AlphaLinks.scss';
 import classNames from 'classnames';
 
 function AlphaLinks({ letter, route, selected }) {
