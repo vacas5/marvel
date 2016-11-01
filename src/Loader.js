@@ -1,6 +1,6 @@
 import React from 'react';
 import oval from './oval.svg';
-import './Loader.css';
+import './Loader.scss';
 
 export default function Loader() {
   return (
