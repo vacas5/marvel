@@ -2,5 +2,5 @@ deployment:
   dev:
     branch: develop
     commands:
-      - npm run build
+      - REACT_APP_MARVEL_KEY=${MARVEL} npm run build
       - aws s3 sync build s3://marvel-dev.russelljanderson.com --delete
