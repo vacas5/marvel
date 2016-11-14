@@ -2,16 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
-import CharacterList from './CharacterList';
-import SeriesList from './SeriesList';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import ContentList from './ContentList';
+import { Router, Route, Redirect, browserHistory } from 'react-router';
 
 ReactDOM.render(
   <Router history={browserHistory}>
+    <Redirect from="/" to="characters/a" />
     <Route path="/" component={App}>
-      <IndexRoute component={CharacterList} />
-      <Route path="characters/:letter" component={CharacterList} />
-      <Route path="series/:letter" component={SeriesList} />
+      <Route path=":listType/:letter" component={ContentList} />
     </Route>
   </Router>,
   document.getElementById('root')
