@@ -4,12 +4,12 @@ import classNames from 'classnames';
 
 function Card({ model, type }) {
     const headers = {
-      "character": model.name,
+      "characters": model.name,
       "series": model.title
     },
     cardImageClass = classNames({
       'card-image': true,
-      'bottom': model.thumbnail.path.indexOf('image_not_available') > -1
+      'bottom': model.thumbnail.path.includes('image_not_available')
     }),
     cardImageStyle = {
       backgroundImage: `url(${model.thumbnail.path}.${model.thumbnail.extension})`
@@ -30,7 +30,7 @@ function Card({ model, type }) {
                 'comiclink': 'Comic Link'
               };
               return (
-                <li key={model.id + '_' + index}>
+                <li key={`${model.id}_${index}`}>
                   <a href={url.url}>{names[url.type]}</a>
                 </li>
               );
