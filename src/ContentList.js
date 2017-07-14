@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AlphaLinks from './AlphaLinks';
 import Loader from './Loader';
-import Card from './Card';
+import CardContainer from './CardContainer';
 import Pagination from './Pagination';
 
 class ContentList extends Component {
@@ -54,8 +54,10 @@ class ContentList extends Component {
       'characters': `http://gateway.marvel.com/v1/public/characters?apikey=${key}&orderBy=name&limit=${this.props.paging}&offset=${offset}&nameStartsWith=${letter}`,
       'series': `http://gateway.marvel.com/v1/public/series?apikey=${key}&orderBy=title&limit=${this.props.paging}&offset=${offset}&titleStartsWith=${letter}`
     };
-
+    this.props.onMount();
     return fetch(urls[listType]).then(this.errorHandler).then(json => {
+        console.log(json);
+        this.props.onFetchSuccess(json.etag);
       this.setState({
         list: json.data.results,
         total: json.data.total,
@@ -88,7 +90,7 @@ class ContentList extends Component {
         <div className="cards">
           {this.state.list.map( (ser) => {
             return (
-              <Card key={ser.id} model={ser} type={this.props.params.listType} />
+              <CardContainer key={ser.id} model={ser} type={this.props.params.listType} />
             );
           })}
         </div>

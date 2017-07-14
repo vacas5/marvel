@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 import classNames from 'classnames';
 
 class Header extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       menuOpen: false
     };
@@ -18,6 +18,7 @@ class Header extends Component {
   }
 
   render () {
+      console.log(this.props)
     var navClass = classNames({
       'navigation-menu': true,
       'show': this.state.menuOpen
@@ -36,10 +37,13 @@ class Header extends Component {
             <ul className={navClass}>
               <li className="nav-link">
                 <Link to="/characters/a">Characters</Link>
-                <Link to="/series/a">Series</Link>
+              </li>
+              <li className="nav-link">
+                  <Link to="/series/a">Series</Link>
               </li>
             </ul>
           </nav>
+          <span style={{color: 'white'}}>{this.props.hoverName}</span>
         </div>
       </header>
     );

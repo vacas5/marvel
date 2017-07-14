@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.scss';
 import classNames from 'classnames';
 
-function Card({ model, type }) {
+function Card({ model, type, active, onMouseOver }) {
     const headers = {
       "characters": model.name,
       "series": model.title
@@ -15,8 +15,13 @@ function Card({ model, type }) {
       backgroundImage: `url(${model.thumbnail.path}.${model.thumbnail.extension})`
     };
 
+    var cardHeaderStyle = {};
+    if (active) {
+        cardHeaderStyle.color = 'red';
+    }
+
     return (
-      <div className="card">
+      <div className="card" onMouseOver={onMouseOver}>
         <div className={cardImageClass} style={cardImageStyle}></div>
         <div className="card-header">
           {headers[type]}
