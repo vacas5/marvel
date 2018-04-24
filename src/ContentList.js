@@ -76,6 +76,13 @@ class ContentList extends Component {
     this.fetchHandler(this.props.params.listType, this.props.params.letter, offset);
   }
 
+  handleClick = (url) => {
+    const key = process.env.REACT_APP_MARVEL_KEY;
+    fetch(`${url}?apikey=${key}`).then(this.errorHandler).then(json => {
+      console.log(json)
+    })
+  }
+
   render() {
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
@@ -86,9 +93,13 @@ class ContentList extends Component {
           {alphabet.map((letter, index) => <AlphaLinks letter={letter} route={`/${this.props.params.listType}/${letter}`} key={index} selected={this.props.params.letter === letter} />)}
         </ul>
         <div className="cards">
-          {this.state.list.map( (ser) => {
+          {this.state.list.map( (item) => {
+            //console.log(item.resourceURI)
+            const handleClick = (e) => {
+              this.handleClick(item.resourceURI);
+            }
             return (
-              <Card key={ser.id} model={ser} type={this.props.params.listType} />
+              <Card key={item.id} model={item} type={this.props.params.listType} onClick={handleClick} />
             );
           })}
         </div>

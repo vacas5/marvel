@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.scss';
 import classNames from 'classnames';
 
-function Card({ model, type }) {
+function Card({ model, type, onClick }) {
     const headers = {
       "characters": model.name,
       "series": model.title
@@ -16,7 +16,7 @@ function Card({ model, type }) {
     };
 
     return (
-      <div className="card">
+      <div className="card" onClick={onClick}>
         <div className={cardImageClass} style={cardImageStyle}></div>
         <div className="card-header">
           {headers[type]}
