@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './App.scss';
 import Header from './Header';
 
+export function getYear() {
+  return new Date(Date.now()).getFullYear();
+}
+
 class App extends Component {
   render() {
     return (
@@ -13,7 +17,7 @@ class App extends Component {
           </div>
         </div>
         <div className="App-footer">
-          <p>Data provided by Marvel. &copy; 2016 Marvel</p>
+          <p>Data provided by Marvel. &copy; {getYear()} Marvel</p>
         </div>
       </div>
     );
