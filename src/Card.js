@@ -1,24 +1,15 @@
-import React, { Component } from 'react';
-import './Card.css';
+import React from 'react';
+import './Card.scss';
 import classNames from 'classnames';
 
-class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      model: this.props.model
-    };
-  }
-
-  render() {
-    const model = this.state.model,
-    headers = {
-      "character": model.name,
+function Card({ model, type }) {
+    const headers = {
+      "characters": model.name,
       "series": model.title
     },
     cardImageClass = classNames({
       'card-image': true,
-      'bottom': model.thumbnail.path.indexOf('image_not_available') > -1
+      'bottom': model.thumbnail.path.includes('image_not_available')
     }),
     cardImageStyle = {
       backgroundImage: `url(${model.thumbnail.path}.${model.thumbnail.extension})`
@@ -28,7 +19,7 @@ class Card extends Component {
       <div className="card">
         <div className={cardImageClass} style={cardImageStyle}></div>
         <div className="card-header">
-          {headers[this.props.type]}
+          {headers[type]}
         </div>
         <div className="card-copy">
           <ul>
@@ -39,7 +30,7 @@ class Card extends Component {
                 'comiclink': 'Comic Link'
               };
               return (
-                <li key={model.id + '_' + index}>
+                <li key={`${model.id}_${index}`}>
                   <a href={url.url}>{names[url.type]}</a>
                 </li>
               );
@@ -48,7 +39,11 @@ class Card extends Component {
         </div>
       </div>
     )
-  }
+}
+
+Card.propTypes = {
+  model: React.PropTypes.object,
+  type: React.PropTypes.string,
 }
 
 export default Card;

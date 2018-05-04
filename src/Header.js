@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './mlogo.png';
-import './Header.css';
+import './Header.scss';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 

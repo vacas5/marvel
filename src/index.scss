@@ -1,7 +1,7 @@
-@import "normalize";
+@import "../sass/normalize";
 @import "../node_modules/bourbon/app/assets/stylesheets/bourbon";
 @import "../node_modules/bourbon-neat/app/assets/stylesheets/neat";
-@import "base/base";
+@import "../sass/base/base";
 
 body {
     background-color: #DC4729;
@@ -11,12 +11,13 @@ body {
 
 .main_title {
     font-size: 2em;
+    text-transform: capitalize;
 }
 
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 0 -20px;
 }
 

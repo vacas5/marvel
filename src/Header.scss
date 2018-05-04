@@ -1,6 +1,6 @@
 @import "../node_modules/bourbon/app/assets/stylesheets/bourbon";
 @import "../node_modules/bourbon-neat/app/assets/stylesheets/neat";
-@import "base/variables";
+@import "../sass/base/variables";
 
 header.navigation {
   $navigation-padding: 1rem;
@@ -363,4 +363,3 @@ header.navigation {
     }
   }
 }
-

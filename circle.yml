@@ -1,0 +1,19 @@
+machine:
+  node:
+    version: 8.2.0
+
+dependencies:
+  pre:
+    - npm install -g npm@5.6.0
+
+deployment:
+  dev:
+    branch: develop
+    commands:
+      - REACT_APP_MARVEL_KEY=${MARVEL} npm run build
+      - aws s3 sync build s3://marvel-dev.russelljanderson.com --delete
+  production:
+    branch: master
+    commands:
+      - REACT_APP_MARVEL_KEY=${MARVEL} npm run build
+      - aws s3 sync build s3://marvel.russelljanderson.com --delete
