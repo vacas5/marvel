@@ -1,21 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import './AlphaLinks.scss';
-import classNames from 'classnames';
-
-function AlphaLinks({ letter, route, selected }) {
-    var listClass = classNames({
-      'active': selected
-    });
-    return(
-      <li className={listClass}><Link to={route}>{letter}</Link></li>
-    )
-}
 
 AlphaLinks.propTypes = {
-  letter: React.PropTypes.string,
-  route: React.PropTypes.string,
-  selected: React.PropTypes.bool,
+  letter: PropTypes.string,
+  route: PropTypes.string,
+  selected: PropTypes.bool,
 }
 
-export default AlphaLinks;
+export default function AlphaLinks({ letter, route, selected }) {
+    return(
+      <li className={selected && 'active'}>
+          <Link to={route}>{letter}</Link>
+      </li>
+    )
+}

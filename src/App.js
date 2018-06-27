@@ -1,19 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './App.scss';
 import Header from './Header';
 
 export function getYear() {
-  return new Date(Date.now()).getFullYear();
+    return new Date(Date.now()).getFullYear();
 }
 
-class App extends Component {
-  render() {
+App.propTypes = {
+    children: PropTypes.node
+}
+
+export default function App({ children }) {
     return (
       <div className="App">
         <div className="App-wrapper">
           <Header />
           <div className="App-intro">
-            {this.props.children}
+            {children}
           </div>
         </div>
         <div className="App-footer">
@@ -21,7 +25,4 @@ class App extends Component {
         </div>
       </div>
     );
-  }
 }
-
-export default App;

@@ -4,22 +4,20 @@ import './Header.scss';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 
-class Header extends Component {
-  constructor() {
-    super();
+export default class Header extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       menuOpen: false
     };
-    this.menuClick = this.menuClick.bind(this);
   }
 
-  menuClick() {
-    this.setState({menuOpen: !this.state.menuOpen});
+  handleMenuClick = () => {
+    this.setState(prevState => ({menuOpen: !prevState.menuOpen}));
   }
 
   render () {
-    var navClass = classNames({
-      'navigation-menu': true,
+    var navClass = classNames('navigation-menu', {
       'show': this.state.menuOpen
     });
     return (
@@ -31,11 +29,13 @@ class Header extends Component {
               ATOR
             </Link>
           </h1>
-          <div className="navigation-menu-button" onClick={this.menuClick}>MENU</div>
+          <div className="navigation-menu-button" onClick={this.handleMenuClick}>MENU</div>
           <nav role="navigation">
             <ul className={navClass}>
               <li className="nav-link">
                 <Link to="/characters/a">Characters</Link>
+              </li>
+              <li className="nav-link">
                 <Link to="/series/a">Series</Link>
               </li>
             </ul>
@@ -45,5 +45,3 @@ class Header extends Component {
     );
   }
 }
-
-export default Header;
