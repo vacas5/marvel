@@ -1,18 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Card.scss';
 import classNames from 'classnames';
 
-function Card({ model, type }) {
+Card.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  title: PropTypes.string,
+  thumbnail: PropTypes.object,
+  urls: PropTypes.array,
+  type: PropTypes.string,
+}
+
+export default function Card({ id, name, title, thumbnail = {}, urls = [], type }) {
     const headers = {
-      "characters": model.name,
-      "series": model.title
-    },
-    cardImageClass = classNames({
-      'card-image': true,
-      'bottom': model.thumbnail.path.includes('image_not_available')
-    }),
-    cardImageStyle = {
-      backgroundImage: `url(${model.thumbnail.path}.${model.thumbnail.extension})`
+      "characters": name,
+      "series": title
+    };
+    const cardImageClass = classNames('card-image', {
+      'bottom': thumbnail.path && thumbnail.path.includes('image_not_available')
+    });
+    const cardImageStyle = {
+      backgroundImage: `url(${thumbnail.path}.${thumbnail.extension})`
     };
 
     return (
@@ -23,14 +32,14 @@ function Card({ model, type }) {
         </div>
         <div className="card-copy">
           <ul>
-            {model.urls.map( (url, index) => {
+            {urls.map( (url, index) => {
               var names = {
                 'detail': 'Detail',
                 'wiki': 'Wiki',
                 'comiclink': 'Comic Link'
               };
               return (
-                <li key={`${model.id}_${index}`}>
+                <li key={`${id}_${index}`}>
                   <a href={url.url}>{names[url.type]}</a>
                 </li>
               );
@@ -40,10 +49,3 @@ function Card({ model, type }) {
       </div>
     )
 }
-
-Card.propTypes = {
-  model: React.PropTypes.object,
-  type: React.PropTypes.string,
-}
-
-export default Card;

@@ -1,6 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import Pagination from './Pagination';
+
+it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Pagination />, div);
+});
 
 describe('previous button', () => {
     it('is visible if page is greather than zero', () => {
@@ -23,10 +29,10 @@ describe('previous button', () => {
         expect(expected).toEqual(actual);
     });
 
-    it('triggers handle decrement function when clicked', () => {
+    it('triggers on decrement function when clicked', () => {
         const clickHandler = jest.fn();
         const component = shallow(
-          <Pagination page={1} offset={20} handleDecrement={clickHandler} />
+          <Pagination page={1} offset={20} onDecrement={clickHandler} />
         );
 
         component.find('.pagination_prev').simulate('click');
@@ -56,10 +62,10 @@ describe('next button', () => {
         expect(expected).toEqual(actual);
     });
 
-    it('triggers handle increment function when clicked', () => {
+    it('triggers on increment function when clicked', () => {
         const clickHandler = jest.fn();
         const component = shallow(
-          <Pagination page={1} offset={20} count={20} total={50} handleIncrement={clickHandler} />
+          <Pagination page={1} offset={20} count={20} total={50} onIncrement={clickHandler} />
         );
 
         component.find('.pagination_next').simulate('click');
