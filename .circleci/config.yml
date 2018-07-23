@@ -110,6 +110,8 @@ jobs:
     # Persist the specified paths (build folder) into the workspace for use in downstream job.
     - persist_to_workspace:
         root: build
+        paths:
+        - /*
 
   deploy: &deploy
     working_directory: ~/vacas5/marvel
@@ -117,7 +119,7 @@ jobs:
     - image: circleci/python:2.7-jessie
     steps:
     - attach_workspace:
-        at: /build
+        at: /vacas5/marvel/build
     - run: sudo pip install awscli
     - run: aws s3 sync build $DESTINATION --delete
 
